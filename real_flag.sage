@@ -142,7 +142,7 @@ class flagcomplex:
         
         OSPgen(D, range(1, N+1), [])
         if verbose:
-            print 'vertices done'
+            print('vertices done')
             
             
         #======================================================================================================
@@ -176,7 +176,7 @@ class flagcomplex:
                             LI[-j-1][k] += 1;    
             vertices[I].initialize_GILI(GI,LI);
         if verbose:
-            print 'GILI done'
+            print('GILI done')
         
         #===============================================
         #generate graph of Schubert cells indexed by osp
@@ -198,7 +198,7 @@ class flagcomplex:
                     v.add_inneighbor(vertices[neighborid], a, b, alpha, beta)
                     vertices[neighborid].add_outneighbor(v, a, b, alpha, beta)
         if verbose:
-            print 'edges done'
+            print('edges done')
         
         
         #======================================================
@@ -213,7 +213,7 @@ class flagcomplex:
                 neighbor['incident'] = not is_even(GI+LI);
                 cell.inneighbors[vertex.id]['incident'] = not is_even(GI+LI);
         if verbose:
-            print 'incidences done'
+            print('incidences done')
 
 
         self.S = S
@@ -294,13 +294,13 @@ class flagcomplex:
                     #========================================                    
                     
                     sign = c1 + c2 + c3 + c4;
-                    #print c1, c2, c3, c4, v.id, id
+                    #print(c1, c2, c3, c4, v.id, id)
                     incidencematrices[dim - v.dim][v.s,neighbor.s] = (-1)^sign * 2;
                     n['weight'] = (-1)^sign * 2;
                 
         self.incidencematrices = incidencematrices;
         if verbose:
-            print 'incidencematrices done'
+            print('incidencematrices done')
         
     
     def compute_cohomology(self, verbose = False):
@@ -319,7 +319,7 @@ class flagcomplex:
         
         for c in range(dim+1):                                  #for each codimension
             if verbose:
-                print c;
+                print(c)
             generators.append(chain.homology(deg = c, generators = true));
             for generator in generators[c]:
                 if generator[0] == Z:
@@ -329,9 +329,9 @@ class flagcomplex:
         self.generators, self.Zgenerators = generators, Zgenerators;
          
         if twotorsion:
-            print "Cohomology has only 2-torsion."
+            print("Cohomology has only 2-torsion.")
         else:    
-            print "COHOMOLOGY HAS NOT ONLY 2-TORSION!"
+            print("COHOMOLOGY HAS NOT ONLY 2-TORSION!")
             
         for c in range(dim+1):                                  #for each codimension        
             for Zgenerator in Zgenerators[c]:                   #for each Z summand
@@ -362,7 +362,7 @@ class flagcomplex:
                         s += ', ';
                     s += str(gen[k]);
                 outputstring = 'codim ' + str(c) + ': ' + s + "\r\n\r"; 
-                print outputstring
+                print(outputstring)
                 if writetofile:
                     outputfile.write(outputstring)
         if writetofile:
